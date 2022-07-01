@@ -1,7 +1,7 @@
 ---
 - name: Collect EOS version
   hosts: all
-  gather_facts: true
+  gather_facts: false
   tasks:
     #- name: Get switch EOS version
     #  eos_command:
@@ -10,10 +10,6 @@
     #- name: Print switch EOS version
     #  debug:
     #    msg: " {{ inventory_hostname }} is running {{ version.stdout[0] }} "
-    - name: build local folders
-      tags: [build]
-      import_role:
-        name: arista.avd.build_output_folders
     - name: generate intended variables
       tags: [build]
       import_role:

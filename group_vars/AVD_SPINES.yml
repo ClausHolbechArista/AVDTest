@@ -1,0 +1,25 @@
+---
+type: spine
+
+spine:
+  defaults:
+    #fabric_name: AVD_FABRIC
+    platform: EOS
+    bgp_as: 65001
+    # Overlay loopback IP and same pool can be assigned to both spine and l3leaf switches
+    # If same loopback pool is defined for both spine and l3leaf,
+    # < loopback_ipv4_offset > must be set in either one of the node_types
+    loopback_ipv4_pool: 192.168.255.0/24
+    # Recommended for vEOS
+    bgp_defaults:
+      - 'no bgp default ipv4-unicast'
+      - 'distance bgp 20 200 200'
+      - 'graceful-restart restart-time 300'
+      - 'graceful-restart'
+  nodes:
+    MS1:
+      id: 1
+      mgmt_ip: 10.90.227.11
+    MS2:
+      id: 2
+      mgmt_ip: 10.90.227.12
