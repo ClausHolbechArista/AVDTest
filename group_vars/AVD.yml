@@ -1,0 +1,26 @@
+---
+# local users
+local_users:
+  # Username with no password configured
+  admin:
+    privilege: 15
+    role: network-admin
+    password: "arista123!"
+
+
+# OOB Management network default gateway.
+mgmt_interface: Management1
+mgmt_gateway: 10.90.227.1
+mgmt_destination_networks:
+  - 0.0.0.0/0
+
+# dns servers.
+name_servers:
+  - 10.90.227.155
+
+# NTP Servers IP or DNS name, first NTP server will be preferred, and sourced from Management VRF
+ntp:
+  servers:
+  - name: uk.pool.ntp.org
+    preferred: true
+  - name: fr.pool.ntp.org
